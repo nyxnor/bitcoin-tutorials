@@ -4,7 +4,7 @@
 
 # set version (change if update is available)
 # https://bitcoincore.org/en/download/
-bitcoinVersion="0.20.1"
+bitcoinVersion="0.20.1.knots20200815"
 
 # needed to check code signing
 luke-jrPGP="E463A93F5F3117EEDE6C7316BD02942421F4889F"
@@ -63,11 +63,11 @@ fi
 gpg --import ./luke-jr.asc
 
 # download signed binary sha256 hash sum file and check
-sudo -u admin wget https://bitcoin.org/bin/bitcoin-core-${bitcoinVersion}/SHA256SUMS.asc
+sudo -u admin wget https://bitcoinknots.org/files/0.20.x/${bitcoinVersion}/SHA256SUMS.asc
 verifyResult=$(gpg --verify SHA256SUMS.asc 2>&1)
 goodSignature=$(echo ${verifyResult} | grep 'Good signature' -c)
 echo "goodSignature(${goodSignature})"
-correctKey=$(echo ${verifyResult} |  grep "using RSA key ${laanwjPGP: -16}" -c)
+correctKey=$(echo ${verifyResult} |  grep "using RSA key ${luke-jrPGP: -16}" -c)
 echo "correctKey(${correctKey})"
 if [ ${correctKey} -lt 1 ] || [ ${goodSignature} -lt 1 ]; then
   echo ""
