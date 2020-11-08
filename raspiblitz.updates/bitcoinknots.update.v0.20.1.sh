@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# based on https://github.com/openoms/bitcoin-tutorials/blob/master/raspiblitz.updates/bitcoincore.update.v0.20.0.sh
+# which is,
 # based on https://github.com/Stadicus/guides/blob/master/raspibolt/raspibolt_30_bitcoin.md#installation
 
 # set version (change if update is available)
