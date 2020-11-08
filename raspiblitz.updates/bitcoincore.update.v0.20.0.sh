@@ -7,7 +7,7 @@
 bitcoinVersion="0.20.1.knots20200815"
 
 # needed to check code signing
-luke-jrPGP="E463A93F5F3117EEDE6C7316BD02942421F4889F"
+lukejrPGP="E463A93F5F3117EEDE6C7316BD02942421F4889F"
 
 echo "Detecting CPU architecture ..."
 isARM=$(uname -m | grep -c 'arm')
@@ -52,11 +52,11 @@ then
   exit 1
 fi
 gpg ./luke-jr.asc
-fingerprint=$(gpg ./luke-jr.asc 2>/dev/null | grep "${luke-jrPGP}" -c)
+fingerprint=$(gpg ./luke-jr.asc 2>/dev/null | grep "${lukejrPGP}" -c)
 if [ ${fingerprint} -lt 1 ]; then
   echo ""
   echo "!!! BUILD WARNING --> Bitcoin PGP author not as expected"
-  echo "Should contain luke-jrPGP: ${luke-jrPGP}"
+  echo "Should contain lukejrPGP: ${lukejrPGP}"
   echo "PRESS ENTER to TAKE THE RISK if you think all is OK"
   read key
 fi
@@ -67,7 +67,7 @@ sudo -u admin wget https://bitcoinknots.org/files/0.20.x/${bitcoinVersion}/SHA25
 verifyResult=$(gpg --verify SHA256SUMS.asc 2>&1)
 goodSignature=$(echo ${verifyResult} | grep 'Good signature' -c)
 echo "goodSignature(${goodSignature})"
-correctKey=$(echo ${verifyResult} |  grep "using RSA key ${luke-jrPGP: -16}" -c)
+correctKey=$(echo ${verifyResult} |  grep "using RSA key ${lukejrPGP: -16}" -c)
 echo "correctKey(${correctKey})"
 if [ ${correctKey} -lt 1 ] || [ ${goodSignature} -lt 1 ]; then
   echo ""
