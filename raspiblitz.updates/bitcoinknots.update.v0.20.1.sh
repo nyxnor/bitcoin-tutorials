@@ -101,7 +101,7 @@ echo "*** BITCOIN v${bitcoinVersion} for ${bitcoinOSversion} ***"
 
 # download resources
 binaryName="bitcoin-${bitcoinVersion}-${bitcoinOSversion}.tar.gz"
-sudo -u admin wget https://bitcoin.org/bin/bitcoin-core-${bitcoinVersion}/${binaryName}
+sudo -u admin wget https://bitcoinknots.org/files/0.20.x/${bitcoinVersion}/${binaryName}
 if [ ! -f "./${binaryName}" ]
 then
     echo "!!! FAIL !!! Download BITCOIN BINARY not success."
