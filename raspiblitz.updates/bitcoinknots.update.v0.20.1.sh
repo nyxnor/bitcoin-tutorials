@@ -67,7 +67,7 @@ sudo -u admin wget https://bitcoinknots.org/files/0.20.x/${bitcoinVersion}/SHA25
 verifyResult=$(gpg --verify SHA256SUMS.asc 2>&1)
 goodSignature=$(echo ${verifyResult} | grep 'Good signature' -c)
 echo "goodSignature(${goodSignature})"
-correctKey=$(echo ${verifyResult} |  grep "using RSA key ${lukejrPGP: -16}" -c)
+correctKey=$(echo ${verifyResult} |  grep "using RSA key ${lukejrPGP: -40}" -c)
 echo "correctKey(${correctKey})"
 if [ ${correctKey} -lt 1 ] || [ ${goodSignature} -lt 1 ]; then
   echo ""
